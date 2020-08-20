@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    background-color: #EAEAE2;
+    display: flex;
+    justify-content: center;
+}
+
+label{
+    letter-spacing: 1.8px;
+    font: 400 20px Ubuntu;
+    margin-bottom: 5px;
+}
+
+input{
+    padding: 15px;
+    border: none;
+    font: 400 15px Ubuntu;
+    outline: none;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+button{
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: #E3A92B;
+    border-radius: 5px;
+    font: 400 15px Ubuntu;
+}
+
+button:hover{
+    background-color: #CD9A11;
+}
