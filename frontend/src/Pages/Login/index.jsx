@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './index.css';
 
@@ -19,6 +20,7 @@ function Login(){
                 </div>
             </div>
             <div className="div-btn">
+                <Link to="/cadastro">Criar conta</Link>
                 <button>Entrar</button>
             </div>
         </div>

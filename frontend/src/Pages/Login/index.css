@@ -31,7 +31,13 @@
     flex-direction: column;
 }
 
-.div-btn{
+.div-btn {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.div-btn a{
+    font: 300 15px Ubuntu;
+    color: white;
 }
