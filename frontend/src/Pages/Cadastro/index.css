@@ -10,3 +10,56 @@
     border-radius: 10px;
     padding: 30px;
 }
+
+hr{
+    border: dashed 3px #E3A92B;
+    margin-bottom: 40px;
+}
+
+.input-groups-dados{
+    display: flex;
+    height: 100px;
+    margin-bottom: 40px;
+}
+
+body .input-groups-dados + .input-groups-dados{
+    margin-bottom: 0;
+}
+
+.input-foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50px;
+    background-color: red;
+}
+
+.dados{
+    display: flex;
+}
+
+.input{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input label{
+    color: white;
+    font-size: 15px;
+}
+
+.input input{
+    padding: 5px;
+}
+
+.input-idade{
+    width: 20%;
+}
+
+.diminui{
+    width: 60px;
+}
+
+.div-btn{
+    justify-content: flex-end;
+}

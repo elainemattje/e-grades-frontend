@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import Cadastro from './Pages/Cadastro';
+import InseriNota from './Pages/Cadastro';
 
 function Router(){
     return(
