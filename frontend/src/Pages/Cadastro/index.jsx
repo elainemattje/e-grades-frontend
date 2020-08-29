@@ -84,14 +84,6 @@ function Cadastro() {
                     <button>Cadastrar</button>
                 </div>
             </div>
-<<<<<<< HEAD
-        </div>
-        <div className="div-btn div-btn-crud">
-                <button>Cadastrar</button>
-        </div>
-        </div>
-=======
->>>>>>> c0bc9f1261058c264285e15c943a6ca29f79e865
         </>
     )
 }
