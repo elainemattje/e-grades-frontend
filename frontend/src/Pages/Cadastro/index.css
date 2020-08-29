@@ -4,7 +4,7 @@
 }
 
 .main-dados{
-    max-width: 700px;
+    max-width: 780px;
     width: 100%;
     background-color: #213242;
     border-radius: 10px;
@@ -60,6 +60,6 @@ body .input-groups-dados + .input-groups-dados{
     width: 60px;
 }
 
-.div-btn{
+.div-btn-crud{
     justify-content: flex-end;
 }

@@ -69,7 +69,7 @@ function Cadastro(){
                 </div>
             </div>
         </div>
-        <div className="div-btn">
+        <div className="div-btn div-btn-crud">
                 <button>Cadastrar</button>
         </div>
         </div>
