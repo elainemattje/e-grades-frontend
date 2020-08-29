@@ -3,6 +3,21 @@
     font: 700 35px Ubuntu;
 }
 
+.titulo-login{
+    font: 700 40px Ubuntu;
+    color: white;
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    font: 400 25px Ubuntu;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
 .main-dados{
     max-width: 780px;
     width: 100%;
@@ -62,4 +77,29 @@ body .input-groups-dados + .input-groups-dados{
 
 .div-btn-crud{
     justify-content: flex-end;
+}
+
+.add{
+    display: flex;
+    padding-left: 20px;
+}
+
+.add-btn{
+    width: 30px;
+    height: 30px;
+    color: black;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+}
+
+.add-title{
+    position: absolute;
+    top: -33px;
+    left: 6px;
+    font: 500 30px Ubuntu;
+}
+
+.add-description{
+    color: rgb(196, 191, 191);
 }
