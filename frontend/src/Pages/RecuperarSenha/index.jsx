@@ -3,32 +3,28 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-function Login() {
-
+function RecuperarSenha() {
     return (
         <div className="box-login">
             <div className="titulo-login">
                 e-Grades <div></div>
             </div>
+            <p className="title">Recuperar senha</p>
+            <p className="description">Ao fornecer o e-mail utilizado em seu cadastro enviaremos uma senha temporária, que deve ser redefinida no período de até 2 (duas) horas.</p>
+            <br />
             <div className="input-groups">
                 <div>
-                    <label>Usuário</label>
+                    <label>E-mail</label>
                     <input></input>
-                </div>
-                <div>
-                    <label>Senha</label>
-                    <input type="password"></input>
                 </div>
             </div>
             <div className="div-btn">
-                <button>Entrar</button>
+                <button>Enviar</button>
                 <br />
-                <Link to="/cadastro">Criar conta</Link>
-                <br />
-                <Link to="/recuperarSenha">Recuperar senha</Link>
+                <Link to="/">Voltar</Link>
             </div>
         </div>
     )
 }
 
-export default Login;
+export default RecuperarSenha;
