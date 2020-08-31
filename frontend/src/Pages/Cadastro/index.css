@@ -1,12 +1,6 @@
-.title-e-grades{
-    margin: 40px 0;
-    font: 700 35px Ubuntu;
-}
-
 .titulo-login{
     font: 700 40px Ubuntu;
     color: white;
-    margin-bottom: 45px;
     display: flex;
     justify-content: space-between;
 }

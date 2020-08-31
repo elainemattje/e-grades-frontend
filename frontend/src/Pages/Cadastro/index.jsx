@@ -65,7 +65,6 @@ function Cadastro() {
 
     return (
         <>
-            {/* <div className="title-e-grades">e-Grades</div> */}
             <div className="main-dados">
                 <div className="titulo-login">
                     e-Grades <div></div>
