@@ -1,8 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
+import swal from 'sweetalert2';
+import NumberFormat from 'react-number-format';
 
 import './index.css';
 
 function Cadastro() {
+
+    const [nome, setNome] = useState('');
+    const [idade, setIdade] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [uf, setUf] = useState('');
+    const [escola, setEscola] = useState('');
+    const [anoEscolar, setAnoEscolar] = useState('');
+    const [materia, setMateira] = useState('');
+    const [diaSemana, setDiaSemana] = useState('');
+    const [professor, setProfessor] = useState('');
+
+    const onChangeNome = (e) => {
+        setNome(e.target.value);
+    }
+
+    const onChangeIdade = (e) => {
+        setIdade(e.target.value);
+    }
+
+    const onChangeCpf = (e) => {
+        setCpf(e.target.value);
+    }
+
+    const onChangeUf = (e) => {
+        setUf(e.target.value);
+    }
+
+    const onChangeCidade = (e) => {
+        setCidade(e.target.value);
+    }
+
+    const onChangeEscola = (e) => {
+        setEscola(e.target.value);
+    }
+
+    const onChangeAnoEscolar = (e) => {
+        setAnoEscolar(e.target.value);
+    }
+
+    const onChangeMateria = (e) => {
+        setMateira(e.target.value);
+    }
+
+    const onChangeDiaSemana = (e) => {
+        setDiaSemana(e.target.value);
+    }
+
+    const onChangeProfessor = (e) => {
+        setProfessor(e.target.value);
+    }
+
+    const isSalva = () => {
+        if(nome === '' || idade === '' || cpf === '' || cidade === '' || uf === '' || escola === '' || anoEscolar === '' || materia === '' || diaSemana === '' || professor === ''){
+            swal.fire('Preencha todos os campos', '', 'error');
+        } 
+    }
+
     return (
         <>
             <div className="main-dados">
@@ -17,29 +77,29 @@ function Cadastro() {
                         <div className="dados">
                             <div className="input">
                                 <label htmlFor="nome">Nome:</label>
-                                <input name="nome" type="text" />
+                                <input onChange={onChangeNome} name="nome" type="text" />
                             </div>
                             <div className="input">
                                 <label className="diminui" htmlFor="idade">Idade:</label>
-                                <input className="diminui" name="email" type="text" />
+                                <input type="number" onChange={onChangeIdade} className="diminui" name="email" type="text" />
                             </div>
                             <div className="input">
                                 <label htmlFor="cpf">CPF:</label>
-                                <input name="cpf" type="text" />
+                                <NumberFormat format="###.###.###-##" onChange={onChangeCpf} name="cpf" type="text" />
                             </div>
                         </div>
                         <div className="dados">
                             <div className="input">
                                 <label htmlFor="cidade">Cidade:</label>
-                                <input name="cidade" type="text" />
+                                <input onChange={onChangeCidade} name="cidade" type="text" />
                             </div>
                             <div className="input">
                                 <label className="diminui" htmlFor="uf">UF:</label>
-                                <input className="diminui" name="uf" type="text" />
+                                <input onChange={onChangeUf} className="diminui" name="uf" type="text" />
                             </div>
                             <div className="input">
                                 <label htmlFor="escola">Escola:</label>
-                                <input name="escola" type="text" />
+                                <input onChange={onChangeEscola} name="escola" type="text" />
                             </div>
                         </div>
                     </div>
@@ -49,7 +109,7 @@ function Cadastro() {
                         <div className="dados">
                             <div className="input">
                                 <label htmlFor="ano-escolar">Ano Escolar:</label>
-                                <input name="ano-escolar" type="text" />
+                                <input onChange={onChangeAnoEscolar} name="ano-escolar" type="text" />
                             </div>
                         </div>
                     </div>
@@ -62,15 +122,15 @@ function Cadastro() {
                         <div className="dados">
                             <div className="input">
                                 <label htmlFor="materia">Matéria:</label>
-                                <input name="materia" type="text" />
+                                <input onChange={onChangeMateria} name="materia" type="text" />
                             </div>
                             <div className="input">
                                 <label htmlFor="diaSemana">dia da Semana:</label>
-                                <input name="diaSemana" type="text" />
+                                <input onChange={onChangeDiaSemana} name="diaSemana" type="text" />
                             </div>
                             <div className="input">
                                 <label htmlFor="professor">Professor(a):</label>
-                                <input name="professor" type="text" />
+                                <input onChange={onChangeProfessor} name="professor" type="text" />
                             </div>
                         </div>
                         <div className="add">
@@ -80,7 +140,7 @@ function Cadastro() {
                     </div>
                 </div>
                 <div className="div-btn">
-                    <button>Cadastrar</button>
+                    <button onClick={isSalva}>Cadastrar</button>
                 </div>
             </div>
         </>
