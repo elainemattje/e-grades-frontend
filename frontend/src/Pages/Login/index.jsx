@@ -21,7 +21,7 @@ function Login() {
                 </div>
             </div>
             <div className="div-btn">
-                <button>Entrar</button>
+                <Link to="/home"><button>Entrar</button></Link>
                 <br />
                 <Link to="/cadastro">Criar conta</Link>
                 <br />

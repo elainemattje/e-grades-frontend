@@ -5,7 +5,6 @@ import './index.css';
 function Cadastro() {
     return (
         <>
-            {/* <div className="title-e-grades">e-Grades</div> */}
             <div className="main-dados">
                 <div className="titulo-login">
                     e-Grades <div></div>
@@ -84,11 +83,6 @@ function Cadastro() {
                     <button>Cadastrar</button>
                 </div>
             </div>
-        </div>
-        <div className="div-btn div-btn-crud">
-            <button>Cadastrar</button>
-        </div>
-        </div >
         </>
     )
 }

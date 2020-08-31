@@ -1,5 +1,25 @@
 .header{
-    width: 100%;
-    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 10px 20px 0 100px;
     background-color: #213242;
+}
+
+.header-btn{
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #213242;
+    border-radius: 5px;
+    font: 300 15px Ubuntu;
+    color: rgb(196, 191, 191);
+}
+
+.avatar{
+    display: flex;
+    align-items: baseline;
 }
