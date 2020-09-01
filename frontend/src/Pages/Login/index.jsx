@@ -44,7 +44,6 @@ function Login() {
                 </div>
             </div>
             <div className="div-btn">
-                <Link to="/home"><button>Entrar</button></Link>
                 <button onClick={isLogin}>Entrar</button>
                 <br />
                 <Link to="/cadastro">Criar conta</Link>

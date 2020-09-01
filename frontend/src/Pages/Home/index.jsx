@@ -7,8 +7,15 @@ import './index.css';
 import Header from '../../Components/Header';
 
 function Home() {
+
+    const dados = [
+        {materia: 'Português', media: 8, faltas: 4},
+        {materia: 'Português', media: 8, faltas: 4},
+    ]
+
     return (
         <>
+
             <Header />
             <div className="home">
                 <div className="home-title">
@@ -17,32 +24,20 @@ function Home() {
                     <div>Média</div>
                     <div>Faltas</div>
                 </div>
-                <div className="home-content">
-                    <div className="materia">Português</div>
-                    <div className="btn-add">
-                        <Link to="/notas"><button className="add-btn"><span><p className="add-title">+</p></span></button></Link>
+                {dados.map(dado => {
+                    return(
+                    <div className="home-content">
+                        <div className="materia">{dado.materia}</div>
+                        <div className="btn-add">
+                            <Link to="/notas"><button className="add-btn"><span><p className="add-title">+</p></span></button></Link>
+                        </div>
+                        <div>{dado.media}</div>
+                        <div>{dado.faltas}</div>
                     </div>
-                    <div>09</div>
-                    <div>02</div>
-                </div>
-                <div className="home-content">
-                    <div className="materia">Matemática</div>
-                    <div className="btn-add">
-                        <Link to="/notas"><button className="add-btn"><span><p className="add-title">+</p></span></button></Link>
-                    </div>
-                    <div>10</div>
-                    <div>12</div>
-                </div>
-                <div className="home-content">
-                    <div className="materia">Biologia</div>
-                    <div className="btn-add">
-                        <Link to="/notas"><button className="add-btn"><span><p className="add-title">+</p></span></button></Link>
-                    </div>
-                    <div>07</div>
-                    <div>04</div>
-                </div>
-                <br />
-                <br />
+                )
+                })}
+                <br/>
+                <br/>
             </div>
             <footer className="footer">
                 <div>

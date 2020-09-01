@@ -13,6 +13,7 @@
 }
 
 .main-dados{
+    margin: 0 auto;
     max-width: 780px;
     width: 100%;
     background-color: #213242;
