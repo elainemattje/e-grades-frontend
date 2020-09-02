@@ -10,53 +10,77 @@ function Home() {
 
     const dados = [
         {materia: 'Português', media: 8, faltas: 4},
-        {materia: 'Português', media: 8, faltas: 4},
+        {materia: 'Matemática', media: 5, faltas: 4},
+        {materia: 'Física', media: 6, faltas: 4},
+        {materia: 'Biologia', media: 7, faltas: 4},
+        {materia: 'Química', media: 10, faltas: 4},
+        {materia: 'Artes', media: 6.5, faltas: 4},
+        {materia: 'Geografia', media: 4, faltas: 4},
+        {materia: 'História', media: 9, faltas: 4},
+        {materia: 'Ed. Física', media: 8.5, faltas: 4},
     ]
 
     return (
         <>
-
             <Header />
-            <div className="home">
-                <div className="home-title">
-                    <div className="materia">Matéria</div>
-                    <div className="space"></div>
-                    <div>Média</div>
-                    <div>Faltas</div>
-                </div>
-                {dados.map(dado => {
-                    return(
-                    <div className="home-content">
-                        <div className="materia">{dado.materia}</div>
-                        <div className="btn-add">
-                            <Link to="/notas"><button className="add-btn"><span><p className="add-title">+</p></span></button></Link>
+            <div className="main-home">
+                
+                <div className="box-notas-home">
+                    <div className="cabecalho">
+                        <div className="line">
+                            <div className="title">Matéria</div>
+                            <div className="title meio">Média</div>
+                            <div className="title">Faltas</div>
                         </div>
-                        <div>{dado.media}</div>
-                        <div>{dado.faltas}</div>
                     </div>
-                )
-                })}
-                <br/>
-                <br/>
-            </div>
-            <footer className="footer">
-                <div>
-                    <div>2020</div>
-                    <div>Centro Universitário Municipal de São José - USJ</div>
-                    <div>Disciplina: Projeto Integrador II</div>
-                    <div>Professor: Osmar da Cunha Filho</div>
-                </div>
-                <br />
-                <div>
-                    <div>Desenvolvido por:</div>
-                    <div>Diego Amorim de Sousa</div>
-                    <div>Elaine Mattje</div>
-                    <div>Jéssica Gerente</div>
-                    <div>Júlia Navegantes
+                    {dados.map(dado => {
+                        return(
+                            <>
+                            <div key={dado.materia} className="notes">
+                                <div style={{marginLeft: 10}} className='line'> <div className={dado.media > 6 ? 'acima' : 'baixo'}></div> <div>{dado.materia}</div></div>
+                                <div className="line meio">{dado.media}</div>
+                                <div className="line">{dado.faltas}</div>
+                            </div>
+                            </>
+                        )
+                    })}
                 </div>
 
+                <div style={{width: '45%'}} className="legenda">
+                    <div className="informacao">
+                        <div className="acima"></div> <div>Nota acima da média.</div>
+                    </div>
+                    <div className="informacao">
+                        <div className="baixo"></div> <div>Nota a baixo da média.</div>
+                    </div>
                 </div>
-            </footer>
+                  
+            </div>
+            <div className="footer">
+                <div className="infos">
+                    <div className="info">
+                        USJ
+                    </div>
+                    <div className="info">
+                        São José, SC
+                    </div>
+                    <div className="info">
+                        (48) 3456-5687
+                    </div>
+                </div>
+                <hr/>
+                <div className="infos">
+                    <div className="info2">
+                        Desenvolvido por:
+                    </div>
+                    <div className="info2">
+                        Diego Sousa, Elaine Mattje
+                    </div>
+                    <div className="info2">
+                        Jessica Gerente, Julia Navegantes
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

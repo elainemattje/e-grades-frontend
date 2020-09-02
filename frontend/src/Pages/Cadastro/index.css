@@ -1,4 +1,4 @@
-.titulo-login{
+.titulo-login-crud{
     font: 700 40px Ubuntu;
     color: white;
     display: flex;
@@ -12,8 +12,8 @@
     text-align: center;
 }
 
-.main-dados{
-    margin: 0 auto;
+.main-dados {
+    margin: 40px auto;
     max-width: 780px;
     width: 100%;
     background-color: #213242;

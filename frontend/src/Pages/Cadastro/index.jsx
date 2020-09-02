@@ -4,7 +4,7 @@ import NumberFormat from 'react-number-format';
 
 import './index.css';
 
-function Cadastro() {
+function Cadastro(props) {
 
     const [nome, setNome] = useState('');
     const [idade, setIdade] = useState('');
@@ -66,7 +66,7 @@ function Cadastro() {
     return (
         <>
             <div className="main-dados">
-                <div className="titulo-login">
+                <div className="titulo-login-crud">
                     e-Grades <div></div>
                 </div>
                 <p className="title">Cadastro de usuário</p>

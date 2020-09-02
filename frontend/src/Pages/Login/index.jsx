@@ -6,6 +6,10 @@ import './index.css';
 
 function Login() {
 
+    const users = [
+        {email: 'diegoASsousa@gmail.com', senha: '123456'}
+    ]
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
@@ -18,14 +22,18 @@ function Login() {
     }
 
     const isLogin = () =>{
-        console.log('EEE');
-        if(email === '' || senha === ''){
-            swal.fire('Preencha todos os campos', '', 'error')
-        } else if(!email.includes('@') && !email.includes('.')){
-            swal.fire('Preencha o seu e-mail corretamente', '', 'error');
-        } else {
-            swal.fire('Cadastro realizado com sucesso', '', 'success');
-        }
+
+        users.map(user => {
+            if(email === '' || senha === ''){
+                swal.fire('Insira seu email ou sua senha para continuar', '', 'error')
+            } else if(!email.includes('@') && !email.includes('.')){
+                swal.fire('Preencha o seu e-mail corretamente', '', 'error');
+            } else if(email !== user.email || senha !== user.senha){
+                swal.fire('Senha ou e-mail incorretos', '', 'error');
+            } else {
+                swal.fire('Cadastro realizado com sucesso', '', 'success');
+            }
+        })
     }
 
     return (
@@ -44,7 +52,7 @@ function Login() {
                 </div>
             </div>
             <div className="div-btn">
-                <button onClick={isLogin}>Entrar</button>
+                <button users={users} onClick={isLogin}>Entrar</button>
                 <br />
                 <Link to="/cadastro">Criar conta</Link>
                 <br />
