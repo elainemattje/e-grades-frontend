@@ -3,6 +3,7 @@ import Avatar from 'react-avatar';
 import { Link } from 'react-router-dom';
 
 import './index.css';
+import Logo from '../../assets/logo-e-grades.png';
 
 function Header() {
     return (
