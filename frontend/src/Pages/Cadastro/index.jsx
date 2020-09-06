@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert2';
 import NumberFormat from 'react-number-format';
+import Button from '@material-ui/core/Button';
+
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 
 import './index.css';
 
@@ -16,6 +20,16 @@ function Cadastro(props) {
     const [materia, setMateira] = useState('');
     const [diaSemana, setDiaSemana] = useState('');
     const [professor, setProfessor] = useState('');
+    const [count, setCount] = useState(1);
+    const [table, setTable] = useState(1);
+
+    const onChangeCount = (e) => {
+        if(count === 1){
+            setCount(2);
+        } else {
+            setCount(1);
+        }
+    }
 
     const onChangeNome = (e) => {
         setNome(e.target.value);
@@ -29,12 +43,12 @@ function Cadastro(props) {
         setCpf(e.target.value);
     }
 
-    const onChangeUf = (e) => {
-        setUf(e.target.value);
-    }
-
     const onChangeCidade = (e) => {
         setCidade(e.target.value);
+    }
+
+    const onChangeUf = (e) => {
+        setUf(e.target.value);
     }
 
     const onChangeEscola = (e) => {
@@ -49,100 +63,119 @@ function Cadastro(props) {
         setMateira(e.target.value);
     }
 
-    const onChangeDiaSemana = (e) => {
-        setDiaSemana(e.target.value);
-    }
-
     const onChangeProfessor = (e) => {
         setProfessor(e.target.value);
     }
 
-    const isSalva = () => {
-        if(nome === '' || idade === '' || cpf === '' || cidade === '' || uf === '' || escola === '' || anoEscolar === '' || materia === '' || diaSemana === '' || professor === ''){
+    let dadosAluno = [];
+
+    const isSave = () =>{
+        if(nome === '' || idade === '' || cpf === '' || cidade === '' || uf === '' || escola === '' || anoEscolar === '' || materia === '' || professor === ''){
             swal.fire('Preencha todos os campos', '', 'error');
-        } 
+        } else {
+            dadosAluno.push(nome, idade, cpf, cidade, uf, escola, anoEscolar, materia, professor);
+        }
+
+        console.log(dadosAluno);
+    }
+
+    const onChangeTable = () =>{
+        setTable(2);
     }
 
     return (
         <>
-            <div className="main-dados">
-                <div className="titulo-login-crud">
-                    e-Grades <div></div>
-                </div>
-                <p className="title">Cadastro de usuário</p>
-                <br />
-                <div className="input-groups-dados">
-                    <div className="input-foto-perfil"></div>
-                    <div className="bloco-input">
-                        <div className="dados">
-                            <div className="input">
-                                <label htmlFor="nome">Nome:</label>
-                                <input onChange={onChangeNome} name="nome" type="text" />
-                            </div>
-                            <div className="input">
-                                <label className="diminui" htmlFor="idade">Idade:</label>
-                                <input type="number" onChange={onChangeIdade} className="diminui" name="email" type="text" />
-                            </div>
-                            <div className="input">
-                                <label htmlFor="cpf">CPF:</label>
-                                <NumberFormat format="###.###.###-##" onChange={onChangeCpf} name="cpf" type="text" />
-                            </div>
-                        </div>
-                        <div className="dados">
-                            <div className="input">
-                                <label htmlFor="cidade">Cidade:</label>
-                                <input onChange={onChangeCidade} name="cidade" type="text" />
-                            </div>
-                            <div className="input">
-                                <label className="diminui" htmlFor="uf">UF:</label>
-                                <input onChange={onChangeUf} className="diminui" name="uf" type="text" />
-                            </div>
-                            <div className="input">
-                                <label htmlFor="escola">Escola:</label>
-                                <input onChange={onChangeEscola} name="escola" type="text" />
-                            </div>
-                        </div>
+            <Header/>
+            <div className="main-perfil">
+                <div className="botoes">
+                    <div onClick={onChangeCount} className={count === 1 ? 'aba border-top' : 'aba'}>
+                        Seus Dados
+                    </div>
+                    <div onClick={onChangeCount} className={count === 1 ? 'aba' : 'aba border-top'}>
+                        Notas
                     </div>
                 </div>
-                <div className="input-groups-dados">
-                    <div className="bloco-input">
-                        <div className="dados">
-                            <div className="input">
-                                <label htmlFor="ano-escolar">Ano Escolar:</label>
-                                <input onChange={onChangeAnoEscolar} name="ano-escolar" type="text" />
+                    <div className="div-crud">
+                        {count === 1 ? 
+                            <>
+                            <div className="group-1">
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="nome">Nome:</label>
+                                    <input onChange={onChangeNome} type="text"/>
+                                </div>
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="Idade">Idade:</label>
+                                    <input onChange={onChangeIdade} className="pequeno" type="text"/>
+                                </div>
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="cpf">CPF:</label>
+                                    <NumberFormat format="###.###.###-##" onChange={onChangeCpf} type="text"/>
+                                </div>
                             </div>
-                        </div>
+                            <div className="group-1">
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="cidade">Cidade:</label>
+                                    <input onChange={onChangeCidade} type="text"/>
+                                </div>
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="uf">UF:</label>
+                                    <input onChange={onChangeUf} className="pequeno" type="text"/>
+                                </div>
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="escola">Escola:</label>
+                                    <input onChange={onChangeEscola} type="text"/>
+                                </div>
+                            </div>
+                            <div className="group-1">
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="anoEscolar">Ano Escolar:</label>
+                                    <input onChange={onChangeAnoEscolar} className="pequeno" type="text"/>
+                                </div>
+                            </div>
+                            </> 
+                            :
+                            <>
+                            <div className="group-1">
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="materia">Materia:</label>
+                                    <input onChange={onChangeMateria} type="text"/>
+                                </div>
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="professor">Professor:</label>
+                                    <input onChange={onChangeProfessor} type="text"/>
+                                </div>
+                            </div>
+                            <Button onClick={onChangeTable} style={{marginLeft: 10, fontSize: 15, fontFamily: 'Ubuntu', width: 200}} variant="contained" color="default" disableElevation>
+                                Adicionar Materia
+                            </Button>
+                            {table === 1 ? '' :
+                            <>
+                            <div style={{maxHeight: 120, height: '100%'}} className="table-notas">
+                                <div className="header-table">
+                                    <div className="column-table">
+                                        Matéria
+                                    </div>
+                                    <div className="column-table">
+                                        Professor
+                                    </div>
+                                </div>
+                                <div className="header-table">
+                                    <div className="column-table">
+                                        {}
+                                    </div>
+                                    <div className="column-table">
+                                        {}
+                                    </div>
+                                </div>
+                            </div>
+                            </>
+                            }
+                            <button onClick={isSave} style={{marginLeft: 470}}>Salvar</button>
+                            </>
+                        }
                     </div>
-                </div>
-                <hr />
-                <p className="title">Cadastro de matéria</p>
-                <br />
-                <div className="input-groups-dados">
-                    <div className="bloco-input">
-                        <div className="dados">
-                            <div className="input">
-                                <label htmlFor="materia">Matéria:</label>
-                                <input onChange={onChangeMateria} name="materia" type="text" />
-                            </div>
-                            <div className="input">
-                                <label htmlFor="diaSemana">dia da Semana:</label>
-                                <input onChange={onChangeDiaSemana} name="diaSemana" type="text" />
-                            </div>
-                            <div className="input">
-                                <label htmlFor="professor">Professor(a):</label>
-                                <input onChange={onChangeProfessor} name="professor" type="text" />
-                            </div>
-                        </div>
-                        <div className="add">
-                            <button className="add-btn"><span><p className="add-title">+</p></span></button>
-                            <p className="add-description">adicionar matéria</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="div-btn">
-                    <button onClick={isSalva}>Cadastrar</button>
-                </div>
             </div>
+            <Footer/>
         </>
     )
 }

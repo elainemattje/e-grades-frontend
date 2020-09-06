@@ -3,6 +3,7 @@ import swal from 'sweetalert2';
 
 import './index.css';
 import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 
 class Home extends Component {
 
@@ -43,18 +44,17 @@ class Home extends Component {
 
           let save = document.getElementById('isSave');
 
-          save.addEventListener("click", () => {this.isSave()});
+          save.addEventListener("click", () => {this.isSave(materia)});
 
     }
 
-    isSave = () => {
+    isSave = (materiaSave) => {
 
-        let materia = document.getElementById('materia').textContent;
         let nota = document.getElementById('nota').value;
         let peso = document.getElementById('peso').value;
         let falta = document.getElementById('falta').value;
 
-        console.log(materia, nota, peso, falta);
+        console.log(materiaSave, nota, peso, falta);
         
     }
 
@@ -98,31 +98,7 @@ class Home extends Component {
                 </div>
                   
             </div>
-            <div className="footer">
-                <div className="infos">
-                    <div className="info">
-                        USJ
-                    </div>
-                    <div className="info">
-                        São José, SC
-                    </div>
-                    <div className="info">
-                        (48) 3456-5687
-                    </div>
-                </div>
-                <hr/>
-                <div className="infos">
-                    <div className="info2">
-                        Desenvolvido por:
-                    </div>
-                    <div className="info2">
-                        Diego Sousa, Elaine Mattje
-                    </div>
-                    <div className="info2">
-                        Jessica Gerente, Julia Navegantes
-                    </div>
-                </div>
-            </div>
+            <Footer/>
         </>
         )
     }

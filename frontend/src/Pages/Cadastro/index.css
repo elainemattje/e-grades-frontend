@@ -1,100 +1,85 @@
-.titulo-login-crud{
-    font: 700 40px Ubuntu;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-}
-
-.title{
-    font: 400 25px Ubuntu;
-    color: white;
-    font-weight: 600;
-    text-align: center;
-}
-
-.main-dados {
-    margin: 40px auto;
-    max-width: 780px;
+.main-perfil{
+    max-width: 1260px;
     width: 100%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-crud{
+    min-height: 300px;
+    width: 600px;
+    padding: 20px;
     background-color: #213242;
-    border-radius: 10px;
-    padding: 30px;
+    border-radius: 20px;
+    border-top: solid 3px #E3A92B;
+    border-bottom: solid 3px #E3A92B;
 }
 
-hr{
-    border: dashed 3px #E3A92B;
-    margin-bottom: 40px;
-}
-
-.input-groups-dados{
+.botoes{
     display: flex;
-    height: 100px;
-    margin-bottom: 40px;
+    margin-right: 270px;
+    position: relative;
+    margin-bottom: -3px;
 }
 
-body .input-groups-dados + .input-groups-dados{
-    margin-bottom: 0;
-}
-
-.input-foto-perfil {
+.aba{
+    cursor: pointer;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
     width: 120px;
-    height: 120px;
-    border-radius: 50px;
-    background-color: red;
+    padding: 10px;
+    background-color: #213242;
+    font: 500 18px Ubuntu;
+    color: white;
 }
 
-.dados{
+.border-top{
+    border-top: solid 2px #E3A92B;
+}
+
+.group-1{
     display: flex;
 }
 
-.input{
-    margin-left: 15px;
+.input-groups{
     display: flex;
     flex-direction: column;
 }
 
-.input label{
+.input-groups label{
     color: white;
-    font-size: 15px;
 }
 
-.input input{
-    padding: 5px;
+.tira-bottom{
+    margin-left: 10px;
+    margin-bottom: 10px !important;
 }
 
-.input-idade{
-    width: 20%;
+.pequeno{
+    width: 50px;
 }
 
-.diminui{
-    width: 60px;
+.btn-mais-materia{
+    margin-left: 10px;
+    font: 550 15px Ubuntu;
 }
 
-.div-btn-crud{
-    justify-content: flex-end;
-}
-
-.add{
+.header-table{
     display: flex;
-    padding-left: 20px;
 }
 
-.add-btn{
-    width: 30px;
-    height: 30px;
-    color: black;
-    background-color: white;
-    border-radius: 50%;
-    position: relative;
+.column-table{
+    font: 700 18px Ubuntu;
+    min-width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    letter-spacing: 2px;
 }
 
-.add-title{
-    position: absolute;
-    top: -33px;
-    left: 6px;
-    font: 500 30px Ubuntu;
-}
-
-.add-description{
-    color: rgb(196, 191, 191);
-}
