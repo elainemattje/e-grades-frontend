@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import swal from 'sweetalert2';
 import NumberFormat from 'react-number-format';
 import Button from '@material-ui/core/Button';
+import api from '../../api/api';
 
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
@@ -12,18 +13,16 @@ function Cadastro(props) {
 
     const [nome, setNome] = useState('');
     const [idade, setIdade] = useState('');
-    const [cpf, setCpf] = useState('');
     const [cidade, setCidade] = useState('');
     const [uf, setUf] = useState('');
     const [escola, setEscola] = useState('');
     const [anoEscolar, setAnoEscolar] = useState('');
     const [materia, setMateira] = useState('');
-    const [diaSemana, setDiaSemana] = useState('');
     const [professor, setProfessor] = useState('');
     const [count, setCount] = useState(1);
-    const [table, setTable] = useState(1);
+    const [inputs, setInput] = useState([{value: ''}]);
 
-    const onChangeCount = (e) => {
+    const onChangeCount = () => {
         if(count === 1){
             setCount(2);
         } else {
@@ -33,14 +32,11 @@ function Cadastro(props) {
 
     const onChangeNome = (e) => {
         setNome(e.target.value);
+        console.log(e.target.value);
     }
 
     const onChangeIdade = (e) => {
         setIdade(e.target.value);
-    }
-
-    const onChangeCpf = (e) => {
-        setCpf(e.target.value);
     }
 
     const onChangeCidade = (e) => {
@@ -67,20 +63,16 @@ function Cadastro(props) {
         setProfessor(e.target.value);
     }
 
-    let dadosAluno = [];
-
-    const isSave = () =>{
-        if(nome === '' || idade === '' || cpf === '' || cidade === '' || uf === '' || escola === '' || anoEscolar === '' || materia === '' || professor === ''){
-            swal.fire('Preencha todos os campos', '', 'error');
-        } else {
-            dadosAluno.push(nome, idade, cpf, cidade, uf, escola, anoEscolar, materia, professor);
-        }
-
-        console.log(dadosAluno);
+    const newMateria = () => {
+        setInput([inputs, {value: ''}]);
     }
 
-    const onChangeTable = () =>{
-        setTable(2);
+    const isSave = () => {
+        if(nome === '' || idade === '' || cidade === '' || uf === '' || escola === '' || anoEscolar === '' || materia === '' || professor === ''){
+            swal.fire('Preencha todos os campos', '', 'error');
+        } else {
+            
+        }
     }
 
     return (
@@ -92,7 +84,7 @@ function Cadastro(props) {
                         Seus Dados
                     </div>
                     <div onClick={onChangeCount} className={count === 1 ? 'aba' : 'aba border-top'}>
-                        Notas
+                        Matéria
                     </div>
                 </div>
                     <div className="div-crud">
@@ -101,35 +93,29 @@ function Cadastro(props) {
                             <div className="group-1">
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="nome">Nome:</label>
-                                    <input onChange={onChangeNome} type="text"/>
+                                    <input value={nome} onChange={onChangeNome} type="text"/>
                                 </div>
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="Idade">Idade:</label>
-                                    <input onChange={onChangeIdade} className="pequeno" type="text"/>
+                                    <input value={idade} onChange={onChangeIdade} className="pequeno" type="text"/>
                                 </div>
-                                <div className="input-groups tira-bottom">
-                                    <label htmlFor="cpf">CPF:</label>
-                                    <NumberFormat format="###.###.###-##" onChange={onChangeCpf} type="text"/>
-                                </div>
-                            </div>
-                            <div className="group-1">
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="cidade">Cidade:</label>
-                                    <input onChange={onChangeCidade} type="text"/>
-                                </div>
-                                <div className="input-groups tira-bottom">
-                                    <label htmlFor="uf">UF:</label>
-                                    <input onChange={onChangeUf} className="pequeno" type="text"/>
-                                </div>
-                                <div className="input-groups tira-bottom">
-                                    <label htmlFor="escola">Escola:</label>
-                                    <input onChange={onChangeEscola} type="text"/>
+                                    <input value={cidade} onChange={onChangeCidade} type="text"/>
                                 </div>
                             </div>
                             <div className="group-1">
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="anoEscolar">Ano Escolar:</label>
-                                    <input onChange={onChangeAnoEscolar} className="pequeno" type="text"/>
+                                    <input value={anoEscolar} onChange={onChangeAnoEscolar} type="text"/>
+                                </div>
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="uf">UF:</label>
+                                    <input value={uf} onChange={onChangeUf} className="pequeno" type="text"/>
+                                </div>
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="escola">Escola:</label>
+                                    <input value={escola} onChange={onChangeEscola} type="text"/>
                                 </div>
                             </div>
                             </> 
@@ -138,38 +124,25 @@ function Cadastro(props) {
                             <div className="group-1">
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="materia">Materia:</label>
-                                    <input onChange={onChangeMateria} type="text"/>
+                                    {/* <input value={materia} onChange={onChangeMateria} type="text"/> */}
                                 </div>
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="professor">Professor:</label>
-                                    <input onChange={onChangeProfessor} type="text"/>
+                                    {/* <input value={professor} onChange={onChangeProfessor} type="text"/> */}
                                 </div>
                             </div>
-                            <Button onClick={onChangeTable} style={{marginLeft: 10, fontSize: 15, fontFamily: 'Ubuntu', width: 200}} variant="contained" color="default" disableElevation>
+                            {inputs.map(input => {
+                                return(
+                                    <>
+                                    <input onChange={onChangeMateria}/>
+                                    <input onChange={onChangeProfessor}/>
+                                    </>
+                                )
+                            })}
+                            <Button onClick={newMateria} style={{marginLeft: 10, fontSize: 15, fontFamily: 'Ubuntu', width: 200}} variant="contained" color="default" disableElevation>
                                 Adicionar Materia
                             </Button>
-                            {table === 1 ? '' :
-                            <>
-                            <div style={{maxHeight: 120, height: '100%'}} className="table-notas">
-                                <div className="header-table">
-                                    <div className="column-table">
-                                        Matéria
-                                    </div>
-                                    <div className="column-table">
-                                        Professor
-                                    </div>
-                                </div>
-                                <div className="header-table">
-                                    <div className="column-table">
-                                        {}
-                                    </div>
-                                    <div className="column-table">
-                                        {}
-                                    </div>
-                                </div>
-                            </div>
-                            </>
-                            }
+                            
                             <button onClick={isSave} style={{marginLeft: 470}}>Salvar</button>
                             </>
                         }
