@@ -71,7 +71,19 @@ function Cadastro(props) {
         if(nome === '' || idade === '' || cidade === '' || uf === '' || escola === '' || anoEscolar === '' || materia === '' || professor === ''){
             swal.fire('Preencha todos os campos', '', 'error');
         } else {
-            
+            api.post('usuario', {
+                nome,
+                idade,
+                cidade,
+                uf,
+                escola,
+                anoEscolar, 
+            }).then(() => {
+                swal.fire('Cadastrado com sucesso', '', 'success');
+            }).catch((err) => {
+                swal.fire('Houve alguma problema no cadastro, tente novamente mais tarde', '', 'error');
+                console.log(err);
+            })
         }
     }
 
