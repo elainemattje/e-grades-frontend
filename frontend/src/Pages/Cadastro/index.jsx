@@ -13,14 +13,13 @@ function Cadastro(props) {
 
     const [nome, setNome] = useState('');
     const [idade, setIdade] = useState('');
-    const [cidade, setCidade] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
     const [uf, setUf] = useState('');
     const [escola, setEscola] = useState('');
     const [anoEscolar, setAnoEscolar] = useState('');
-    const [materia, setMateira] = useState('');
-    const [professor, setProfessor] = useState('');
     const [count, setCount] = useState(1);
-    const [inputs, setInput] = useState([{value: ''}]);
+    const [inputs, setInput] = useState([{materia: '', professor: ''}]);
 
     const onChangeCount = () => {
         if(count === 1){
@@ -39,8 +38,12 @@ function Cadastro(props) {
         setIdade(e.target.value);
     }
 
-    const onChangeCidade = (e) => {
-        setCidade(e.target.value);
+    const onChangeEmail = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const onChangeSenha = (e) => {
+        setSenha(e.target.value);
     }
 
     const onChangeUf = (e) => {
@@ -55,29 +58,27 @@ function Cadastro(props) {
         setAnoEscolar(e.target.value);
     }
 
-    const onChangeMateria = (e) => {
-        setMateira(e.target.value);
-    }
-
-    const onChangeProfessor = (e) => {
-        setProfessor(e.target.value);
-    }
-
     const newMateria = () => {
-        setInput([inputs, {value: ''}]);
+        setInput([...inputs, {materia: '', professor: ''}]);
     }
 
     const isSave = () => {
-        if(nome === '' || idade === '' || cidade === '' || uf === '' || escola === '' || anoEscolar === '' || materia === '' || professor === ''){
+        console.log(inputs);
+        if(nome === '' || idade === '' || email === '' || senha === '' || uf === '' || escola === '' || anoEscolar === ''){
             swal.fire('Preencha todos os campos', '', 'error');
+        } else if(!email.includes('@') || !email.includes('.')){
+            swal.fire('Preencha o seu email corretamente', '', 'errr');
+        } else if(senha.length < 6){
+            swal.fire('Sua senha precisa ter no mínimo 6 digítos');
         } else {
             api.post('usuario', {
                 nome,
                 idade,
-                cidade,
+                email,
+                senha,
                 uf,
                 escola,
-                anoEscolar, 
+                anoEscolar,
             }).then(() => {
                 swal.fire('Cadastrado com sucesso', '', 'success');
             }).catch((err) => {
@@ -109,17 +110,17 @@ function Cadastro(props) {
                                 </div>
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="Idade">Idade:</label>
-                                    <input value={idade} onChange={onChangeIdade} className="pequeno" type="text"/>
+                                    <input value={idade} onChange={onChangeIdade} className="pequeno" type="number"/>
                                 </div>
                                 <div className="input-groups tira-bottom">
-                                    <label htmlFor="cidade">Cidade:</label>
-                                    <input value={cidade} onChange={onChangeCidade} type="text"/>
+                                    <label htmlFor="email">E-mail:</label>
+                                    <input value={email} onChange={onChangeEmail} type="text"/>
                                 </div>
                             </div>
                             <div className="group-1">
                                 <div className="input-groups tira-bottom">
-                                    <label htmlFor="anoEscolar">Ano Escolar:</label>
-                                    <input value={anoEscolar} onChange={onChangeAnoEscolar} type="text"/>
+                                    <label htmlFor="anoEscolar">Senha:</label>
+                                    <input value={senha} onChange={onChangeSenha} type="password"/>
                                 </div>
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="uf">UF:</label>
@@ -130,26 +131,32 @@ function Cadastro(props) {
                                     <input value={escola} onChange={onChangeEscola} type="text"/>
                                 </div>
                             </div>
+                            <div className="group-1">
+                                <div className="input-groups tira-bottom">
+                                    <label htmlFor="anoEscolar">Ano Escolar:</label>
+                                    <input value={anoEscolar} onChange={onChangeAnoEscolar} type="text"/>
+                                </div>
+                            </div>
                             </> 
                             :
                             <>
                             <div className="group-1">
                                 <div className="input-groups tira-bottom">
-                                    <label htmlFor="materia">Materia:</label>
-                                    {/* <input value={materia} onChange={onChangeMateria} type="text"/> */}
+                                    <label style={{marginRight: 140}} htmlFor="materia">Materia:</label>
                                 </div>
                                 <div className="input-groups tira-bottom">
                                     <label htmlFor="professor">Professor:</label>
-                                    {/* <input value={professor} onChange={onChangeProfessor} type="text"/> */}
                                 </div>
                             </div>
                             {inputs.map(input => {
                                 return(
                                     <>
-                                    <input onChange={onChangeMateria}/>
-                                    <input onChange={onChangeProfessor}/>
+                                    <input value={input.materia} style={{marginRight: 10, marginBottom: 15}}
+                                    onChange={e => setInput('materia', e.target.value)}/>
+                                    <input value={input.professor} style={{marginBottom: 15}} 
+                                    onChange={e => setInput('professor', e.target.value)}/>
                                     </>
-                                )
+                                );
                             })}
                             <Button onClick={newMateria} style={{marginLeft: 10, fontSize: 15, fontFamily: 'Ubuntu', width: 200}} variant="contained" color="default" disableElevation>
                                 Adicionar Materia
