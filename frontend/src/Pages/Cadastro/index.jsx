@@ -19,7 +19,7 @@ function Cadastro(props) {
     const [escola, setEscola] = useState('');
     const [anoEscolar, setAnoEscolar] = useState('');
     const [count, setCount] = useState(1);
-    const [inputs, setInput] = useState([{materia: '', professor: ''}]);
+    const [inputs, setInput] = useState([{}]);
 
     const onChangeCount = () => {
         if(count === 1){
@@ -31,7 +31,6 @@ function Cadastro(props) {
 
     const onChangeNome = (e) => {
         setNome(e.target.value);
-        console.log(e.target.value);
     }
 
     const onChangeIdade = (e) => {
@@ -51,6 +50,7 @@ function Cadastro(props) {
     }
 
     const onChangeEscola = (e) => {
+        console.log(e, 'e');
         setEscola(e.target.value);
     }
 
@@ -58,8 +58,12 @@ function Cadastro(props) {
         setAnoEscolar(e.target.value);
     }
 
+    const onChangeMateria = (e) => {
+        setInput(e.target.value);
+    }
+
     const newMateria = () => {
-        setInput([...inputs, {materia: '', professor: ''}]);
+        setInput([...inputs, {}]);
     }
 
     const isSave = () => {
@@ -137,6 +141,7 @@ function Cadastro(props) {
                                     <input value={anoEscolar} onChange={onChangeAnoEscolar} type="text"/>
                                 </div>
                             </div>
+                            <button className="btnDadosAluno" onClick={isSave} style={{marginLeft: 470}}>Salvar</button>
                             </> 
                             :
                             <>
@@ -151,10 +156,8 @@ function Cadastro(props) {
                             {inputs.map(input => {
                                 return(
                                     <>
-                                    <input value={input.materia} style={{marginRight: 10, marginBottom: 15}}
-                                    onChange={e => setInput('materia', e.target.value)}/>
-                                    <input value={input.professor} style={{marginBottom: 15}} 
-                                    onChange={e => setInput('professor', e.target.value)}/>
+                                    <input onChange={onChangeMateria} value={input.materia} style={{marginRight: 10, marginBottom: 15}}/>
+                                    <input value={input.professor} style={{marginBottom: 15}}/>
                                     </>
                                 );
                             })}

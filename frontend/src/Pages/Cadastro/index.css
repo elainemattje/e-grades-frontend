@@ -83,3 +83,8 @@
     letter-spacing: 2px;
 }
 
+.btnDadosAluno{
+    margin-left: 465px;
+    position: absolute;
+    bottom: 200px;
+}
