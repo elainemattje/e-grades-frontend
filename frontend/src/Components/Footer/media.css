@@ -1,0 +1,9 @@
+@media (max-width: 670px) {
+    .info, .info2{
+        font: 300 12px Ubuntu;
+        margin: 10px;
+    }
+    .footer hr{
+        height: 80px;
+    }
+    }

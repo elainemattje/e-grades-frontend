@@ -1,0 +1,36 @@
+@media (max-width: 670px) {
+    .line .title, .notes .line{
+        width: 110px;
+    }
+    
+    .notes .line, .plus{
+        color: white;
+        font: 300 12px Ubuntu;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .informacao{
+        font: 400 12px Ubuntu;
+        display: flex;
+        height: 30px;
+        align-items: center;
+    }
+
+    .plus{
+        cursor: pointer;
+        padding-right: 10px;
+        font-size: 15px;
+    }
+
+    .line .title, .notes .line{
+        width: 100px;
+    }
+
+    .title{
+        font-size: 20px;
+
+    }
+}

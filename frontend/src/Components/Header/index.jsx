@@ -3,6 +3,7 @@ import Avatar from 'react-avatar';
 import { Link } from 'react-router-dom';
 
 import './index.css';
+import './media.css';
 import { useState } from 'react';
 
 function Header() {
@@ -13,12 +14,12 @@ function Header() {
         let url = window.location.href;
         let cortaUrl = url.split('/');
         cortaUrl.map(item => {
-           if(item !== 'cadastro'){
+            if (item !== 'cadastro') {
                 setRetornaUser(1);
-           } else {
+            } else {
                 setRetornaUser(2);
-           }
-    })
+            }
+        })
     }
 
     window.onload = HeaderUser;
@@ -27,15 +28,15 @@ function Header() {
         <>
             <div className="header">
                 <div className="titulo-login header-titulo">e-Grades</div>
-                {retornaUser === 1 ? 
+                {retornaUser === 1 ?
                     <div className="avatar">
                         <Link to="/cadastro"><button className="header-btn">Editar</button></Link>
                         <Link to="/"><button className="header-btn">Sair</button></Link>
                     </div>
-                :
+                    :
                     ''
                 }
-                
+
             </div>
         </>
     )

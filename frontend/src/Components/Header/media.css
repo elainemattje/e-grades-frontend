@@ -1,0 +1,9 @@
+@media (max-width: 670px) {
+    .header-titulo {
+        font-size: 25px !important;
+    }
+
+    .header{
+        padding: 15px;
+    }
+}

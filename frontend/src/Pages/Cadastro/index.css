@@ -20,7 +20,7 @@
 
 .botoes{
     display: flex;
-    margin-right: 270px;
+    /* margin-right: 270px; */
     position: relative;
     margin-bottom: -3px;
 }
@@ -85,7 +85,7 @@
 
 .btnDadosAluno{
     margin-left: 465px;
-    position: absolute;
+    position: initial;
     bottom: 200px;
 }
 

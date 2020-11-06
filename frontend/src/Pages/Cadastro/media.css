@@ -1,0 +1,22 @@
+@media (max-width: 670px) {
+    .group-1 {
+        flex-direction: column;
+    }
+    .div-crud {
+        width: 90%;
+    }
+    .btnDadosAluno {
+        margin-left: 10px;
+        position: initial;
+    }
+    .aba{
+        width: 80px;
+        font-size: 12px;
+    }
+    label{
+        font-size: 12px;
+    }
+    input{
+        padding: 5px;
+    }
+}
