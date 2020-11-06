@@ -19,7 +19,6 @@ function Cadastro(props) {
     const [escola, setEscola] = useState('');
     const [anoEscolar, setAnoEscolar] = useState('');
     const [count, setCount] = useState(1);
-    const [inputs, setInput] = useState([{}]);
 
     const onChangeCount = () => {
         if(count === 1){
@@ -58,16 +57,22 @@ function Cadastro(props) {
         setAnoEscolar(e.target.value);
     }
 
-    const onChangeMateria = (e) => {
-        setInput(e.target.value);
-    }
-
-    const newMateria = () => {
-        setInput([...inputs, {}]);
-    }
-
     const isSave = () => {
-        console.log(inputs);
+
+        let materia = document.getElementsByName('materia');
+
+        for(let i = 0; i < materia.length; i++){
+            if(materia[i].checked){
+                api.post('materia', {
+                    materia: materia[i].id
+                }).then(() => {
+                    console.log('success');
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+        }
+
         if(nome === '' || idade === '' || email === '' || senha === '' || uf === '' || escola === '' || anoEscolar === ''){
             swal.fire('Preencha todos os campos', '', 'error');
         } else if(!email.includes('@') || !email.includes('.')){
@@ -145,27 +150,37 @@ function Cadastro(props) {
                             </> 
                             :
                             <>
-                            <div className="group-1">
-                                <div className="input-groups tira-bottom">
-                                    <label style={{marginRight: 140}} htmlFor="materia">Materia:</label>
+                            <div className="escolha-materia">
+                                Escolha sua matéria :
+                            </div>
+                            <div>
+                                <div>
+                                    <div className="materias">
+                                        <input type="checkbox" name="materia" id="português"/><div>Português</div>
+                                    </div>
+                                    <div className="materias">
+                                        <input type="checkbox" name="materia" id="matematica"/><div>Matemática</div>
+                                    </div>
+                                    <div className="materias">
+                                        <input type="checkbox" name="materia" id="geografia"/><div>Geografia</div>
+                                    </div>
+                                    <div className="materias">
+                                        <input type="checkbox" name="materia" id="historia"/><div>História</div>
+                                    </div>
+                                    <div className="materias">
+                                        <input type="checkbox" name="materia" id="fisica"/><div>Física</div>
+                                    </div>
+                                    <div className="materias">
+                                        <input type="checkbox" name="materia" id="biologia"/><div>Biologia</div>
+                                    </div>
+                                    <div className="materias">
+                                        <input type="checkbox" name="materia" id="Ed. Física"/><div>Ed. Física</div>
+                                    </div>
                                 </div>
-                                <div className="input-groups tira-bottom">
-                                    <label htmlFor="professor">Professor:</label>
+                                <div>
+                                    <button className="btnDadosAluno" onClick={isSave} style={{marginLeft: 470}}>Salvar</button>
                                 </div>
                             </div>
-                            {inputs.map(input => {
-                                return(
-                                    <>
-                                    <input onChange={onChangeMateria} value={input.materia} style={{marginRight: 10, marginBottom: 15}}/>
-                                    <input value={input.professor} style={{marginBottom: 15}}/>
-                                    </>
-                                );
-                            })}
-                            <Button onClick={newMateria} style={{marginLeft: 10, fontSize: 15, fontFamily: 'Ubuntu', width: 200}} variant="contained" color="default" disableElevation>
-                                Adicionar Materia
-                            </Button>
-                            
-                            <button onClick={isSave} style={{marginLeft: 470}}>Salvar</button>
                             </>
                         }
                     </div>

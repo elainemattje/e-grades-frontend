@@ -88,3 +88,20 @@
     position: absolute;
     bottom: 200px;
 }
+
+.escolha-materia{
+    font: 700 25px Ubuntu;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.materias{
+    display: flex;
+}
+
+.materias div{
+    margin-left: 10px;
+    font: 400 18px Ubuntu;
+    color: white;
+    letter-spacing: 4.4px;
+}
